@@ -12,4 +12,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-from app import routes 
+# app/__init__.py
+from app.Usuario.usuarioRoutes import usuario_bp
+app.register_blueprint(usuario_bp)
+
+from app.Produto.produtoRoutes import produto_bp
+app.register_blueprint(produto_bp)
+
+from app.Compra.compraRoutes import compra_bp
+app.register_blueprint(compra_bp)
+
