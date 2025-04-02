@@ -21,3 +21,19 @@ class UsuarioController:
         if usuario:
             return jsonify({'id': usuario.id, 'nome': usuario.nome, 'sobrenome': usuario.sobrenome, 'saldo': usuario.saldo})
         return jsonify({'message': 'Usuário não encontrado'}), 404
+    
+    @staticmethod
+    def update_usuario(usuario_id):
+        data = request.json
+        usuario = UsuarioService.update_usuario(usuario_id, data)
+        if usuario:
+            return jsonify({'id': usuario.id, 'nome': usuario.nome, 'sobrenome': usuario.sobrenome, 'saldo': usuario.saldo})
+        return jsonify({'message': 'Usuário não encontrado'}), 404
+    
+    @staticmethod   
+    def delete_usuario(usuario_id):
+        usuario = UsuarioService.delete_usuario(usuario_id)
+        if usuario:
+            return jsonify({'message': 'Usuário deletado com sucesso'}), 200
+        return jsonify({'message': 'Usuário não encontrado'}), 404
+    

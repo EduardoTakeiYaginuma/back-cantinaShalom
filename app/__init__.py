@@ -22,3 +22,6 @@ app.register_blueprint(produto_bp)
 from app.Compra.compraRoutes import compra_bp
 app.register_blueprint(compra_bp)
 
+from app.Compra_Produto.compraProdutoRoutes import compraProduto_bp
+app.register_blueprint(compraProduto_bp)
+

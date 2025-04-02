@@ -1,6 +1,6 @@
 # app/Compra/compra_service.py
 from app.Compra.compraRepository import CompraRepository
-from app.Usuario.usuarioController import get_usuario
+from app.Usuario.usuarioController import UsuarioController
 from app.models import Compra
 from datetime import date
 
@@ -23,15 +23,11 @@ class CompraService:
     
     @staticmethod
     def create_compra(data):
-        usuario = get_usuario(data['usuario_id'])
+        usuario = UsuarioController.get_usuario(data['usuario_id'])
         if not usuario:
             raise ValueError("Usuário não encontrado")
-        nova_compra = Compra(
-            total= 0,
-            data=date.today(),
-            usuario_id=data['usuario_id'],
-        )
-        return CompraRepository.create_compra(nova_compra)
+        
+        return CompraRepository.create_compra(data)
     
     @staticmethod
     def update_compra(compra_id, data):

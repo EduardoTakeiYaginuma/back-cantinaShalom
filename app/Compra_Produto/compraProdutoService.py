@@ -19,12 +19,12 @@ class CompraProdutoService:
         produto = ProdutoController.get_produto(data['produto_id'])
         if not compra or not produto:
             return None
-        
+        produto = produto.get_json()
         nova_compraProduto = CompraProduto(
             compra_id=data['compra_id'],
             produto_id=data['produto_id'],
             quantidade=data['quantidade'],
-            total=produto.preco * data['quantidade']  
+            total=produto["preco"] * data['quantidade']  
         )
         return CompraProdutoRepository.create(nova_compraProduto)
 

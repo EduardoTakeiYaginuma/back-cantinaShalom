@@ -20,7 +20,13 @@ class CompraProdutoController:
     def create_compraProduto():
         data = request.json
         compraProduto = CompraProdutoService.create_compraProduto(data)
-        return jsonify({'id': compraProduto.id, 'compra_id': compraProduto.compra_id, 'produto_id': compraProduto.produto_id, 'quantidade': compraProduto.quantidade, 'total': compraProduto.total}), 201
+        return jsonify(
+            {'id': compraProduto.id, 
+             'compra_id': compraProduto.compra_id, 
+             'produto_id': compraProduto.produto_id, 
+             'quantidade': compraProduto.quantidade, 
+             'total': compraProduto.total
+             }), 201
 
     @staticmethod
     def update_compraProduto(compraProduto_id):

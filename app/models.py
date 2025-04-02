@@ -29,4 +29,4 @@ class CompraProduto(db.Model):
     compra_id = db.Column(db.Integer, db.ForeignKey('compra.id'), nullable=False)
     produto_id = db.Column(db.Integer, db.ForeignKey('produto.id'), nullable=False)
     quantidade = db.Column(db.Integer, nullable=False)
-    total = db.Column(db.Integer, nullable=False)
+    total = db.Column(db.Integer)

@@ -14,15 +14,21 @@ class CompraRepository:
         return Compra.query.get(compra_id)
     
     @staticmethod
-    def create_compra(nova_compra):
-        
-        db.session.add(nova_compra)
+    def create_compra(data):
+        compra = Compra(
+            total= 0,
+            data=date.today(),
+            usuario_id=data['usuario_id'],
+        )
+        db.session.add(compra)
         db.session.commit()
-        return nova_compra
+        return compra
     
     @staticmethod
     def update_compra(compra, data):
-        compra.total = data['total']
+        compra["usuario_id"] = data['usuario_id']
+        compra["total"] = data['total']
+        db.session.add(compra)  
         db.session.commit()
         return compra
     
