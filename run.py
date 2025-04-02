@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import Usuario, Produto, Compra
+from app.models import Usuario, Produto, Compra, CompraProduto
 import os
 
 def setup_database():
@@ -31,10 +31,19 @@ def setup_database():
                 db.session.commit()
 
             if not Compra.query.first():
-                compra1 = Compra(total=15, data="2023-10-01", usuario_id=1, produto_id=1)
-                compra2 = Compra(total=5, data="2023-10-02", usuario_id=2, produto_id=2)
+                compra1 = Compra(total=15, data="2023-10-01", usuario_id=1)
+                compra2 = Compra(total=5, data="2023-10-02", usuario_id=2)
                 db.session.add(compra1)
                 db.session.add(compra2)
+                db.session.commit()
+
+                # Adicionando produtos às compras na tabela CompraProduto
+                compra_produto1 = CompraProduto(compra_id=compra1.id, produto_id=1, quantidade=1)
+                compra_produto2 = CompraProduto(compra_id=compra1.id, produto_id=2, quantidade=1)
+                compra_produto3 = CompraProduto(compra_id=compra2.id, produto_id=2, quantidade=1)
+                db.session.add(compra_produto1)
+                db.session.add(compra_produto2)
+                db.session.add(compra_produto3)
                 db.session.commit()
     except Exception as e:
         print(f"Erro ao configurar o banco de dados: {e}")

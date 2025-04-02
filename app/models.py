@@ -8,6 +8,7 @@ class Usuario(db.Model):
     sobrenome = db.Column(db.String(45), nullable=False)
     nickname = db.Column(db.String(45), nullable=True)
     quarto = db.Column(db.String(45), nullable=False)
+    compras = db.relationship('Compra', backref='usuario', lazy=True)
 
 class Produto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,4 +22,11 @@ class Compra(db.Model):
     total = db.Column(db.Integer, nullable=False)
     data = db.Column(db.Date, nullable=False)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
+    produtos = db.relationship('CompraProduto', backref='compra', lazy=True)
+
+class CompraProduto(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    compra_id = db.Column(db.Integer, db.ForeignKey('compra.id'), nullable=False)
     produto_id = db.Column(db.Integer, db.ForeignKey('produto.id'), nullable=False)
+    quantidade = db.Column(db.Integer, nullable=False)
+    total = db.Column(db.Integer, nullable=False)

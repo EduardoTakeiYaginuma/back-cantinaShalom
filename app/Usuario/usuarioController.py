@@ -14,3 +14,10 @@ class UsuarioController:
         data = request.json
         usuario = UsuarioService.create_usuario(data)
         return jsonify({'id': usuario.id, 'nome': usuario.nome, 'sobrenome': usuario.sobrenome}), 201
+
+    @staticmethod
+    def get_usuario(usuario_id):
+        usuario = UsuarioService.get_usuario_by_id(usuario_id)
+        if usuario:
+            return jsonify({'id': usuario.id, 'nome': usuario.nome, 'sobrenome': usuario.sobrenome, 'saldo': usuario.saldo})
+        return jsonify({'message': 'Usuário não encontrado'}), 404
