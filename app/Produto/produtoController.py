@@ -7,20 +7,20 @@ class ProdutoController:
     @staticmethod
     def get_produtos():
         produtos = ProdutoService.get_all_produtos()
-        return jsonify([{'id': p.id, 'nome': p.nome, 'quantidade': p.quantidade, 'preco': p.preco} for p in produtos])
+        return jsonify([{'id': p.id, 'nome': p.nome, 'quantidade': p.quantidade, 'tipo': p.tipo, 'preco': p.preco} for p in produtos])
 
     @staticmethod
     def get_produto(produto_id):
         produto = ProdutoService.get_produto_by_id(produto_id)
         if produto:
-            return jsonify({'id': produto.id, 'nome': produto.nome, 'quantidade': produto.quantidade, 'preco': produto.preco})
+            return jsonify({'id': produto.id, 'nome': produto.nome, 'quantidade': produto.quantidade, 'tipo': produto.tipo,'preco': produto.preco})
         return jsonify({'message': 'Produto não encontrado'}), 404
 
     @staticmethod
     def create_produto():
         data = request.json
         produto = ProdutoService.create_produto(data)
-        return jsonify({'id': produto.id, 'nome': produto.nome, 'quantidade': produto.quantidade, 'preco': produto.preco}), 201
+        return jsonify({'id': produto.id, 'nome': produto.nome, 'tipo': produto.tipo, 'quantidade': produto.quantidade, 'preco': produto.preco}), 201
 
     @staticmethod
     def update_produto(produto_id):

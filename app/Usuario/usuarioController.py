@@ -7,13 +7,13 @@ class UsuarioController:
     @staticmethod
     def get_usuarios():
         usuarios = UsuarioService.get_all_usuarios()
-        return jsonify([{'id': u.id, 'nome': u.nome, 'sobrenome': u.sobrenome, 'saldo': u.saldo} for u in usuarios])
+        return jsonify([{'id': u.id, 'nome': u.nome, 'sobrenome': u.sobrenome, 'saldo': u.saldo, 'quarto': u.quarto, 'tipo_usuario': u.tipo_usuario} for u in usuarios])
 
     @staticmethod
     def create_usuario():
         data = request.json
         usuario = UsuarioService.create_usuario(data)
-        return jsonify({'id': usuario.id, 'nome': usuario.nome, 'sobrenome': usuario.sobrenome}), 201
+        return jsonify({'id': usuario.id, 'nome': usuario.nome, 'sobrenome': usuario.sobrenome, 'quarto': usuario.quarto, 'tipo_usuario': usuario.tipo_usuario}), 201
 
     @staticmethod
     def get_usuario(usuario_id):

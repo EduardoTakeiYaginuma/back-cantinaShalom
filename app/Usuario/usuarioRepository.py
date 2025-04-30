@@ -14,6 +14,7 @@ class UsuarioRepository:
             nome=data['nome'], 
             sobrenome=data['sobrenome'], 
             tipo_usuario=data['tipo_usuario'], 
+            quarto=data['quarto'],
             saldo=data['saldo']
         )
         db.session.add(usuario)

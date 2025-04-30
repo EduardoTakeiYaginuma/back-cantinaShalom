@@ -11,8 +11,8 @@ def setup_database():
             if not Usuario.query.first():
                 usuario1 = Usuario(tipo_usuario=1, saldo=100, nome="João", sobrenome="Silva", quarto="101")
                 usuario2 = Usuario(tipo_usuario=2, saldo=50, nome="Maria", sobrenome="Oliveira", quarto="102")
-                usuario3 = Usuario(tipo_usuario=3, saldo=200, nome="Carlos", sobrenome="Pereira", quarto="103")
-                usuario4 = Usuario(tipo_usuario=4, saldo=150, nome="Ana", sobrenome="Souza", quarto="104")
+                usuario3 = Usuario(tipo_usuario=1, saldo=200, nome="Carlos", sobrenome="Pereira", quarto="103")
+                usuario4 = Usuario(tipo_usuario=3, saldo=150, nome="Ana", sobrenome="Souza", quarto="104")
                 db.session.add(usuario3)
                 db.session.add(usuario4)
                 db.session.add(usuario1)
@@ -20,9 +20,9 @@ def setup_database():
                 db.session.commit()
 
             if not Produto.query.first():
-                produto1 = Produto(nome="Cachorro Quente", quantidade=50, tipo="Lanche", preco=10)
+                produto1 = Produto(nome="Cachorro Quente", quantidade=50, tipo="Doce", preco=10)
                 produto2 = Produto(nome="Refrigerante", quantidade=30, tipo="Bebida", preco=5)
-                produto3 = Produto(nome="Pizza", quantidade=20, tipo="Lanche", preco=20)
+                produto3 = Produto(nome="Pizza", quantidade=20, tipo="Salgadinho", preco=20)
                 produto4 = Produto(nome="Água", quantidade=100, tipo="Bebida", preco=2)
                 db.session.add(produto1)
                 db.session.add(produto2)
