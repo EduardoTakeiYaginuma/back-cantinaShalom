@@ -1,0 +1,15 @@
+# Comando que será executado quando clicar em "Run"
+run = "python run.py"
+modules = ["python-3.11"]
+
+[nix]
+channel = "stable-24_05" # Define a versão estável do ambiente Nix
+
+[deployment]
+# Comando para instalar dependências e rodar o aplicativo
+run = ["sh", "-c", "pip install -r requirements.txt && python run.py"]
+
+[[ports]]
+# Configuração de portas para o Flask
+localPort = 8080
+externalPort = 8080
