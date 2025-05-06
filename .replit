@@ -4,6 +4,7 @@ modules = ["python-3.11"]
 
 [nix]
 channel = "stable-24_05" # Define a versão estável do ambiente Nix
+packages = ["openssh"]
 
 [deployment]
 # Comando para instalar dependências e rodar o aplicativo
