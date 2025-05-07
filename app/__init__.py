@@ -12,7 +12,7 @@ from flask_cors import CORS
 load_dotenv()  
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{os.getenv("MD_DB_USERNAME")}:{os.getenv("MD_DB_PASSWORD")}@{os.getenv("MD_DB_SERVER")}/mydb'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

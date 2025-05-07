@@ -1,6 +1,7 @@
 from app import app, db
 from app.models import Usuario, Produto, Compra, CompraProduto
 import os
+from datetime import datetime
 
 def setup_database():
     try:
@@ -31,8 +32,8 @@ def setup_database():
                 db.session.commit()
 
             if not Compra.query.first():
-                compra1 = Compra(total=15, data="2023-10-01", usuario_id=1)
-                compra2 = Compra(total=5, data="2023-10-02", usuario_id=2)
+                compra1 = Compra(total=15, data=datetime.strptime("2023-10-01", "%Y-%m-%d").date(), usuario_id=1)
+                compra2 = Compra(total=5, data=datetime.strptime("2023-10-02", "%Y-%m-%d").date(), usuario_id=2)
                 db.session.add(compra1)
                 db.session.add(compra2)
                 db.session.commit()
