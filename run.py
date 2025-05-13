@@ -1,3 +1,5 @@
+from flask import Flask
+
 from app import app, db
 from app.models import Usuario, Produto, Compra, CompraProduto
 import os
@@ -48,6 +50,10 @@ def setup_database():
                 db.session.commit()
     except Exception as e:
         print(f"Erro ao configurar o banco de dados: {e}")
+
+@app.route('/')
+def home():
+    return "API no ar!"
 
 if __name__ == '__main__':
     setup_database()
