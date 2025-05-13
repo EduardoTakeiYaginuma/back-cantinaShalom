@@ -1,13 +1,14 @@
 # app/Usuario/usuario_controller.py
 from flask import request, jsonify
 from app.Usuario.usuarioService import UsuarioService
+from app.model import ResponseEntity
 
 class UsuarioController:
 
     @staticmethod
     def get_usuarios():
         usuarios = UsuarioService.get_all_usuarios()
-        return jsonify([{'id': u.id, 'nome': u.nome, 'sobrenome': u.sobrenome, 'saldo': u.saldo, 'quarto': u.quarto, 'tipo_usuario': u.tipo_usuario} for u in usuarios])
+        return ResponseEntity(200, usuarios)
 
     @staticmethod
     def create_usuario():
