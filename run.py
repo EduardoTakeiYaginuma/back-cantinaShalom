@@ -1,9 +1,10 @@
 from flask import Flask
-
-from app import app, db
+from app import create_app, db
 from app.models import Usuario, Produto, Compra, CompraProduto
 import os
 from datetime import datetime
+
+app = create_app()
 
 def setup_database():
     try:
@@ -55,6 +56,8 @@ def setup_database():
 def home():
     return "API no ar!"
 
+app = create_app()
+
 if __name__ == '__main__':
     setup_database()
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=5000, debug=True)

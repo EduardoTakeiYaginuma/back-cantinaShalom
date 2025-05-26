@@ -1,5 +1,5 @@
 # app/Compra/compra_controller.py
-from flask import jsonify, request
+from flask import jsonify, request, Response
 from app.Compra.compraService import CompraService
 from app.model import ResponseEntity
 
@@ -8,7 +8,12 @@ class CompraController:
     @staticmethod
     def get_compras():
         compras = CompraService.get_all_compras()
-        return ResponseEntity(200, jsonify([{'id': c.id, 'total': c.total, 'data': c.data, 'usuario_id': c.usuario_id} for c in compras]))
+        return Response(200, "Compras recuperadas com sucesso", [{'id': c.id, 'total': c.total, 'data': c.data, 'usuario_id': c.usuario_id} for c in compras])
+        # return ResponseEntity(
+        #     200,
+        #     "Compras recuperadas com sucesso",
+        #     [{'id': c.id, 'total': c.total, 'data': c.data, 'usuario_id': c.usuario_id} for c in compras]
+        # )
 
     @staticmethod
     def get_compra(compra_id):
